@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/Browse.dart';
 import 'package:movies_app/HomePage.dart';
 import 'package:movies_app/WatchList.dart';
+import 'package:movies_app/my_theme_data.dart';
 import 'package:movies_app/search_provider.dart';
 import 'package:movies_app/search_tab.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
 
    },
    debugShowCheckedModeBanner: false,
-
+  themeMode: ThemeMode.dark,
+   darkTheme: MyThemeData.appTheme,
   )
   );
  }

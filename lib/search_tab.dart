@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/search_provider.dart';
 import 'package:provider/provider.dart'; // Update with your actual path
 
@@ -20,23 +21,25 @@ class SearchTab extends SearchDelegate<String> {
   InputDecorationTheme get searchFieldDecorationTheme => InputDecorationTheme(
     contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.0), // Rounded corners
-      borderSide: BorderSide.none, // Remove border
+      borderRadius: BorderRadius.circular(30.0),
+      borderSide: BorderSide(
+        color: Appcolors.primary,
+        width: 1
+
+      ),
     ),
-    fillColor: Colors.grey[200], // Background color
+    fillColor: Colors.grey[200],
     filled: true,
-    //hintText: 'Search movies...',
     hintStyle: TextStyle(
-      color: Colors.grey[600], // Hint text color
+      color: Colors.grey[600],
     ),
-    // // Search icon inside the search bar
   );
 
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear, color: Colors.red),
+        icon: Icon(Icons.clear, color: Colors.blueGrey),
         onPressed: () {
           query = '';
         },
@@ -47,7 +50,7 @@ class SearchTab extends SearchDelegate<String> {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back, color: Colors.blue),
+      icon: Icon(Icons.arrow_back, color: Colors.blueGrey),
       onPressed: () {
         close(context, '');
       },
@@ -63,9 +66,9 @@ class SearchTab extends SearchDelegate<String> {
       builder: (context, AsyncSnapshot<void> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
-            color: Colors.black,
+            color: Appcolors.primary,
             child: Center(
-              child: CircularProgressIndicator(color: Colors.blueGrey),
+              child: CircularProgressIndicator(color: Appcolors.secondary),
             ),
           );
         }
@@ -78,7 +81,7 @@ class SearchTab extends SearchDelegate<String> {
 
         if (movies.isEmpty) {
           return Container(
-            color: Colors.black,
+            color: Appcolors.primary,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -87,15 +90,12 @@ class SearchTab extends SearchDelegate<String> {
                   Icon(
                     Icons.local_movies,
                     size: 100,
-                    color: Colors.blueGrey,
+                    color: Appcolors.secondary,
                   ),
                   SizedBox(height: 5),
                   Text(
                     'No result found',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.blueGrey,
-                    ),
+                    style:Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -105,7 +105,7 @@ class SearchTab extends SearchDelegate<String> {
         }
 
         return Container(
-          color: Colors.black,
+          color: Appcolors.primary,
           child: ListView.separated(
             itemCount: movies.length,
             itemBuilder: (context, index) {
@@ -126,7 +126,7 @@ class SearchTab extends SearchDelegate<String> {
                           errorBuilder: (context, error, stackTrace) {
                             // Fallback image if the network image fails to load
                             return Icon(Icons.movie_creation_sharp,
-                            color: Colors.blueGrey,
+                            color: Appcolors.secondary,
                             size: 100,);
                           },
                         ),
@@ -140,19 +140,13 @@ class SearchTab extends SearchDelegate<String> {
                         children: [
                           Text(
                             movie.title ?? 'No Title',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
+                            style:Theme.of(context).textTheme.bodyLarge
                           ),
                           SizedBox(height: 4),
                           Text(
                             movie.getYear(),
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Colors.grey[600],
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Colors.grey[600]
                             ),
                           ),
                           SizedBox(height: 4),
@@ -160,11 +154,9 @@ class SearchTab extends SearchDelegate<String> {
                             movie.actors != null && movie.actors!.isNotEmpty
                                 ? 'Heroes: ${movie.actors!.take(3).join(', ')}' // Showing top 3 heroes
                                 : 'No Heroes Found',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Colors.grey[600],
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Colors.grey[600]
+                          ),
                           ),
                         ],
                       ),
@@ -174,7 +166,7 @@ class SearchTab extends SearchDelegate<String> {
               );
             },
             separatorBuilder: (context, index) => Divider(
-              color: Colors.grey[400],
+              color: Appcolors.secondary,
               thickness: 1,
             ),
           ),

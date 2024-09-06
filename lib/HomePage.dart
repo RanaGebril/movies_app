@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/Browse.dart';
 import 'package:movies_app/WatchList.dart';
 import 'package:movies_app/api_manager.dart';
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff131313),
+      backgroundColor: Appcolors.primary,
       body: FutureBuilder(
         future: ApiManager.getPopularMovies(),
         builder: (context, snapshot) {
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
             return Center(
               child: Text(
                 'Something went wrong!',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Appcolors.whiteColor),
               ),
             );
           }
@@ -72,12 +73,12 @@ class HomePage extends StatelessWidget {
                                     return Center(
                                       child: Icon(
                                         Icons.broken_image,
-                                        color: Colors.white,
+                                        color: Appcolors.whiteColor,
                                       ),
                                     );
                                   },
                                 ),
-                                Center(child: Icon(Icons.play_circle_sharp, color: Colors.white, size: 40,)),
+                                Center(child: Icon(Icons.play_circle_sharp, color: Appcolors.whiteColor, size: 40,)),
                                 // Display bookmark and add icons on the second movie image
                                 if (index == 1)
                                   Positioned(
@@ -94,7 +95,7 @@ class HomePage extends StatelessWidget {
                                           right: 0,
                                           child: Icon(
                                             Icons.add,
-                                            color: Colors.white,
+                                            color: Appcolors.whiteColor,
                                             size: 20,
                                           ),
                                         ),
@@ -111,20 +112,13 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Text(
                                   title,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyLarge,
                                   textAlign: TextAlign.right,
                                 ),
                                 SizedBox(height: 4.0),
                                 Text(
                                   releaseDate,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                  ),
+                                  style:Theme.of(context).textTheme.bodyMedium,
                                   textAlign: TextAlign.right,
                                 ),
                               ],
@@ -134,11 +128,11 @@ class HomePage extends StatelessWidget {
                       ),
                     )
                         : Container(
-                      color: Color(0xff131313) ,
+                      color: Appcolors.primary,
                       child: Center(
                         child: Text(
                           'No Image Available',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Appcolors.whiteColor,),
                         ),
                       ),
                     );
@@ -183,7 +177,7 @@ class HomePage extends StatelessWidget {
                               errorBuilder: (context, error, stackTrace) {
                                 return Icon(
                                   Icons.broken_image,
-                                  color: Colors.white,
+                                  color: Appcolors.whiteColor,
                                 );
                               },
                             ),
@@ -193,7 +187,7 @@ class HomePage extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 'No Image Available',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Appcolors.whiteColor),
                               ),
                             ),
                           );
@@ -216,7 +210,7 @@ class HomePage extends StatelessWidget {
                           ),
                           Icon(
                             Icons.add,
-                            color: Colors.white,
+                            color: Appcolors.whiteColor,
                           ),
                         ],
                       ),
@@ -236,17 +230,15 @@ class HomePage extends StatelessWidget {
                       // New Release Section
                       Container(
                         width: double.infinity,
-                        color: Colors.grey[850],
+                        color: Appcolors.secondary,
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'New Release',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                              style:Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                fontSize: 20
                               ),
                             ),
                             SizedBox(height: 10),
@@ -261,7 +253,7 @@ class HomePage extends StatelessWidget {
                                   return Center(
                                     child: Text(
                                       'Something went wrong!',
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Appcolors.whiteColor,),
                                     ),
                                   );
                                 }
@@ -292,7 +284,7 @@ class HomePage extends StatelessWidget {
                                                   return Center(
                                                     child: Icon(
                                                       Icons.broken_image,
-                                                      color: Colors.white,
+                                                      color: Appcolors.whiteColor,
                                                     ),
                                                   );
                                                 },
@@ -307,7 +299,7 @@ class HomePage extends StatelessWidget {
                                                   Icon(
                                                     // Change the icon based on the index value
                                                      index == 1 ? Icons.check: Icons.add, // Use `Icons.check` instead of `Icons.ok`
-                                                    color: Colors.white,
+                                                    color: Appcolors.whiteColor,
                                                   ),
                                                 ],
                                               ),
@@ -337,10 +329,8 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               'Recommended',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                              style:Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  fontSize: 20
                               ),
                             ),
                             SizedBox(height: 10),
@@ -355,7 +345,7 @@ class HomePage extends StatelessWidget {
                                   return Center(
                                     child: Text(
                                       'Something went wrong!',
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Appcolors.whiteColor,),
                                     ),
                                   );
                                 }
@@ -402,7 +392,7 @@ class HomePage extends StatelessWidget {
                                                         return Center(
                                                           child: Icon(
                                                             Icons.broken_image,
-                                                            color: Colors.white,
+                                                            color: Appcolors.whiteColor,
                                                           ),
                                                         );
                                                       },
@@ -415,7 +405,7 @@ class HomePage extends StatelessWidget {
                                                         ),
                                                         Icon(
                                                           Icons.add,
-                                                          color: Colors.white,
+                                                          color: Appcolors.whiteColor,
                                                         ),
                                                       ],
                                                     ),
@@ -439,7 +429,7 @@ class HomePage extends StatelessWidget {
                                                       Text(
                                                         voteAverage.toStringAsFixed(1),
                                                         style: TextStyle(
-                                                          color: Colors.white,
+                                                          color: Appcolors.whiteColor,
                                                           fontSize: 14.0,
                                                         ),
                                                       ),
@@ -448,7 +438,7 @@ class HomePage extends StatelessWidget {
                                                   Text(
                                                     title,
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Appcolors.whiteColor,
                                                       fontWeight: FontWeight.bold,
                                                       fontSize: 16.0,
                                                     ),
@@ -459,7 +449,7 @@ class HomePage extends StatelessWidget {
                                                   Text(
                                                     releaseDate,
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Appcolors.whiteColor,
                                                       fontSize: 14.0,
                                                     ),
                                                     overflow: TextOverflow.ellipsis,
@@ -498,23 +488,24 @@ class HomePage extends StatelessWidget {
                 onPressed:() {
                   Navigator.pushNamed(context,HomePage.routeName);
                 }, icon:Icon(Icons.home_sharp,
-              color: Colors.white,
+              color: Appcolors.whiteColor
             )),
             Spacer(),
             IconButton(onPressed:() {
               showSearch(context: context, delegate: SearchTab(
                 searchProvider: Provider.of<SearchProvider>(context, listen: false),
               ),
-              );
-            }, icon:Icon(Icons.search,color:Colors.white)),
+              );//  context: context,
+             // delegate: CustomSearchDelegate(),
+            }, icon:Icon(Icons.search,color:Appcolors.whiteColor)),
             Spacer(),
             IconButton(onPressed:() {
               Navigator.pushNamed(context,Browse.routeName);
-            }, icon:Icon(Icons.movie_creation,color:Colors.white)),
+            }, icon:Icon(Icons.movie_creation,color:Appcolors.whiteColor)),
             Spacer(),
             IconButton(onPressed:() {
               Navigator.pushNamed(context,WatchKListScreen.routeName);
-            }, icon:Icon(Icons.collections_bookmark,color:Colors.white)),
+            }, icon:Icon(Icons.collections_bookmark,color:Appcolors.whiteColor)),
             Spacer(),
 
           ],

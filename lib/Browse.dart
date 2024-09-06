@@ -27,8 +27,9 @@ class _BrowseState extends State<Browse> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text('Browse Category'),
+        title: Text('Browse Category',
+        ),
+
       ),
       backgroundColor: Color(0xff131313),
       body: FutureBuilder<BrowseCategory>(
@@ -77,11 +78,7 @@ class _BrowseState extends State<Browse> {
                       child: Center(
                         child: Text(
                           genre.name ?? '',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16.0,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge
                         ),
                       ),
                     ),
@@ -93,6 +90,7 @@ class _BrowseState extends State<Browse> {
         },
       ),
       bottomNavigationBar:Container(
+
         color:Color(0xff1a1a1a) ,
         child: Row(
           children: [
