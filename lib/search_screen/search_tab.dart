@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/AppColors.dart';
-import 'package:movies_app/search_provider.dart';
+import 'package:movies_app/search_screen/search_provider.dart';
 import 'package:provider/provider.dart'; // Update with your actual path
 
 class SearchTab extends SearchDelegate<String> {

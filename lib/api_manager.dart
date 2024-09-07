@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:movies_app/BrowseCategory.dart';
-import 'package:movies_app/MoviesOfCategory.dart';
-import 'package:movies_app/PopularMovies.dart';
-import 'package:movies_app/TopRated.dart';
-import 'package:movies_app/UpComing_Movies.dart';
-import 'package:movies_app/searchresult.dart';
+import 'package:movies_app/browes_screen/BrowseCategory.dart';
+import 'package:movies_app/browes_screen/MoviesOfCategory.dart';
+import 'package:movies_app/home/PopularMovies.dart';
+import 'package:movies_app/home/TopRated.dart';
+import 'package:movies_app/home/UpComing_Movies.dart';
+import 'package:movies_app/search_screen/searchresult.dart';
 class ApiManager {
   static Future<PopularMovies> getPopularMovies() async {
     Uri url = Uri.https('api.themoviedb.org', '/3/movie/popular', {

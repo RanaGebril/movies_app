@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/AppColors.dart';
-import 'package:movies_app/Browse.dart';
-import 'package:movies_app/WatchList.dart';
+import 'package:movies_app/browes_screen/Browse.dart';
+import 'package:movies_app/watch_list/WatchList.dart';
 import 'package:movies_app/api_manager.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:movies_app/search_provider.dart';
-import 'package:movies_app/search_tab.dart';
+import 'package:movies_app/search_screen/search_provider.dart';
+import 'package:movies_app/search_screen/search_tab.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -495,8 +495,8 @@ class HomePage extends StatelessWidget {
               showSearch(context: context, delegate: SearchTab(
                 searchProvider: Provider.of<SearchProvider>(context, listen: false),
               ),
-              );//  context: context,
-             // delegate: CustomSearchDelegate(),
+              );//
+             //
             }, icon:Icon(Icons.search,color:Appcolors.whiteColor)),
             Spacer(),
             IconButton(onPressed:() {
@@ -504,7 +504,7 @@ class HomePage extends StatelessWidget {
             }, icon:Icon(Icons.movie_creation,color:Appcolors.whiteColor)),
             Spacer(),
             IconButton(onPressed:() {
-              Navigator.pushNamed(context,WatchKListScreen.routeName);
+              Navigator.pushNamed(context,WatchListScreen.routeName);
             }, icon:Icon(Icons.collections_bookmark,color:Appcolors.whiteColor)),
             Spacer(),
 

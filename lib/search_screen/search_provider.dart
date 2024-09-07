@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/api_manager.dart';
-import 'package:movies_app/movies.dart';
-import 'package:movies_app/searchresult.dart';
+import 'package:movies_app/search_screen/movies.dart';
+import 'package:movies_app/search_screen/searchresult.dart';
 
 
 class SearchProvider with ChangeNotifier {

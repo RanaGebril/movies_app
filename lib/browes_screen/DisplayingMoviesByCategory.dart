@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/MoviesOfCategory.dart';
+import 'package:movies_app/browes_screen/MoviesOfCategory.dart';
 import 'package:movies_app/api_manager.dart';
 
 class MoviesByCategoryScreen extends StatefulWidget {

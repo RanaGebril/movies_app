@@ -1,9 +1,16 @@
+// browse.dart
 import 'package:flutter/material.dart';
-import 'package:movies_app/BrowseCategory.dart';
-import 'package:movies_app/DisplayingMoviesByCategory.dart';
-import 'package:movies_app/HomePage.dart';
-import 'package:movies_app/WatchList.dart';
+import 'package:movies_app/AppColors.dart';
+import 'package:movies_app/browes_screen/BrowseCategory.dart';
+import 'package:movies_app/browes_screen/DisplayingMoviesByCategory.dart';
+import 'package:movies_app/browes_screen/categories.dart';
+import 'package:movies_app/home/HomePage.dart';
+import 'package:movies_app/search_screen/search_provider.dart';
+import 'package:movies_app/search_screen/search_tab.dart';
+import 'package:movies_app/watch_list/WatchList.dart';
 import 'package:movies_app/api_manager.dart';
+import 'package:provider/provider.dart';
+
 
 class Browse extends StatefulWidget {
   static const String routeName = 'browse';
@@ -27,9 +34,8 @@ class _BrowseState extends State<Browse> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Browse Category',
-        ),
-
+        backgroundColor: Colors.transparent,
+        title: Text('Browse Category'),
       ),
       backgroundColor: Color(0xff131313),
       body: FutureBuilder<BrowseCategory>(
@@ -54,7 +60,9 @@ class _BrowseState extends State<Browse> {
                 var genre = snapshot.data!.genres![index];
                 String imageUrl = 'assets/images/Migration.jpg';
 
-                return GestureDetector(
+                return Categories(
+                  imageUrl: imageUrl,
+                  genreName: genre.name ?? '',
                   onTap: () {
                     Navigator.push(
                       context,
@@ -65,58 +73,47 @@ class _BrowseState extends State<Browse> {
                       ),
                     );
                   },
-                  child: GridTile(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(imageUrl),
-                          fit: BoxFit.cover,
-                          opacity: 100,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Text(
-                          genre.name ?? '',
-                          style: Theme.of(context).textTheme.bodyLarge
-                        ),
-                      ),
-                    ),
-                  ),
                 );
               },
             );
           }
         },
       ),
-      bottomNavigationBar:Container(
-
-        color:Color(0xff1a1a1a) ,
+      bottomNavigationBar: Container(
+        color: Color(0xff1a1a1a),
         child: Row(
           children: [
             Spacer(),
             IconButton(
-                onPressed:() {
-                  Navigator.pushNamed(context,HomePage.routeName);
-                }, icon:Icon(Icons.home_sharp,
-              color: Colors.white,
-            )),
+              onPressed: () {
+                Navigator.pushNamed(context, HomePage.routeName);
+              },
+              icon: Icon(Icons.home_sharp, color: Colors.white),
+            ),
             Spacer(),
             IconButton(onPressed:() {
-              Navigator.pushNamed(context, '');
-            }, icon:Icon(Icons.search,color:Colors.white)),
+              showSearch(context: context, delegate: SearchTab(
+                searchProvider: Provider.of<SearchProvider>(context, listen: false),
+              ),
+              );//
+              //
+            }, icon:Icon(Icons.search,color:Appcolors.whiteColor)),
             Spacer(),
-            IconButton(onPressed:() {
-              Navigator.pushNamed(context,Browse.routeName);
-            }, icon:Icon(Icons.movie_creation,color:Colors.white)),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Browse.routeName);
+              },
+              icon: Icon(Icons.movie_creation, color: Colors.white),
+            ),
             Spacer(),
-            IconButton(onPressed:() {
-              Navigator.pushNamed(context,WatchKListScreen.routeName);
-            }, icon:Icon(Icons.collections_bookmark,color:Colors.white)),
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, WatchListScreen.routeName);
+              },
+              icon: Icon(Icons.collections_bookmark, color: Colors.white),
+            ),
             Spacer(),
-
           ],
-
         ),
       ),
     );
