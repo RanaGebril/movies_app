@@ -41,9 +41,15 @@ class HomePage extends StatelessWidget {
           return Stack(
             children: [
               // Use Positioned to control the height of PopularUi
-              PopularUi(),
               Positioned(
-                top: MediaQuery.of(context).size.height * 0.3558,
+                top: 0,
+                left: 0,
+                right: 0,
+                height: MediaQuery.of(context).size.height * 0.4,
+                child: PopularUi(),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.3558, // Start from below PopularUi
                 left: 0,
                 right: 0,
                 bottom: 0,
@@ -85,14 +91,11 @@ class BottomNavBar extends StatelessWidget {
             icon: Icon(Icons.home_sharp, color: Colors.white),
           ),
           Spacer(),
-          IconButton(
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: SearchTab(
-                  searchProvider: Provider.of<SearchProvider>(context, listen: false),
-                ),
-              );
+          IconButton(onPressed:() {
+            showSearch(context: context, delegate: SearchTab(
+              searchProvider: Provider.of<SearchProvider>(context, listen: false),
+            ),
+            );
             },
             icon: Icon(Icons.search, color: Colors.white),
           ),

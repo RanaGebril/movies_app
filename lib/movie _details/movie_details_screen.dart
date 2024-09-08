@@ -4,10 +4,13 @@ import 'package:movies_app/browes_screen/Browse.dart';
 import 'package:movies_app/firebase_functions.dart';
 import 'package:movies_app/home/HomePage.dart';
 import 'package:movies_app/movie%20_details/movie_details_model.dart';
+import 'package:movies_app/search_screen/search_provider.dart';
+import 'package:movies_app/search_screen/search_tab.dart';
 import 'package:movies_app/similar_movies.dart';
 import 'package:movies_app/watch_list/WatchList.dart';
 
 import 'package:movies_app/watch_list/whatch_list_model.dart';
+import 'package:provider/provider.dart';
 
 
 class MovieDetailsScreen extends StatelessWidget {
@@ -364,7 +367,10 @@ class MovieDetailsScreen extends StatelessWidget {
             )),
             Spacer(),
             IconButton(onPressed:() {
-              Navigator.pushNamed(context, '');
+              showSearch(context: context, delegate: SearchTab(
+                searchProvider: Provider.of<SearchProvider>(context, listen: false),
+              ),
+              );
             }, icon:Icon(Icons.search,color:Colors.white)),
             Spacer(),
             IconButton(onPressed:() {

@@ -15,6 +15,9 @@ appBarTheme: AppBarTheme(
     size: 25
   ),
 ),
+    navigationBarTheme: NavigationBarThemeData(
+      height: 20
+    ),
     textTheme: TextTheme(
       bodySmall: TextStyle(
         fontWeight: FontWeight.w400,

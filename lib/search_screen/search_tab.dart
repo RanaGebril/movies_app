@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/search_screen/search_provider.dart';
@@ -23,8 +24,8 @@ class SearchTab extends SearchDelegate<String> {
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(30.0),
       borderSide: BorderSide(
-        color: Appcolors.primary,
-        width: 1
+          color: Appcolors.primary,
+          width: 1
 
       ),
     ),
@@ -126,8 +127,8 @@ class SearchTab extends SearchDelegate<String> {
                           errorBuilder: (context, error, stackTrace) {
                             // Fallback image if the network image fails to load
                             return Icon(Icons.movie_creation_sharp,
-                            color: Appcolors.secondary,
-                            size: 100,);
+                              color: Appcolors.secondary,
+                              size: 100,);
                           },
                         ),
                       ),
@@ -139,14 +140,14 @@ class SearchTab extends SearchDelegate<String> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            movie.title ?? 'No Title',
-                            style:Theme.of(context).textTheme.bodyLarge
+                              movie.title ?? 'No Title',
+                              style:Theme.of(context).textTheme.bodyLarge
                           ),
                           SizedBox(height: 4),
                           Text(
                             movie.getYear(),
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Colors.grey[600]
+                                color: Colors.grey[600]
                             ),
                           ),
                           SizedBox(height: 4),
@@ -155,8 +156,8 @@ class SearchTab extends SearchDelegate<String> {
                                 ? 'Heroes: ${movie.actors!.take(3).join(', ')}' // Showing top 3 heroes
                                 : 'No Heroes Found',
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Colors.grey[600]
-                          ),
+                                color: Colors.grey[600]
+                            ),
                           ),
                         ],
                       ),

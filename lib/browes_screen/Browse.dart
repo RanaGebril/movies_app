@@ -1,4 +1,3 @@
-// browse.dart
 import 'package:flutter/material.dart';
 import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/browes_screen/BrowseCategory.dart';
@@ -95,8 +94,7 @@ class _BrowseState extends State<Browse> {
               showSearch(context: context, delegate: SearchTab(
                 searchProvider: Provider.of<SearchProvider>(context, listen: false),
               ),
-              );//
-              //
+              );
             }, icon:Icon(Icons.search,color:Appcolors.whiteColor)),
             Spacer(),
             IconButton(
