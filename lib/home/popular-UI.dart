@@ -28,33 +28,35 @@ class PopularUi extends StatelessWidget {
 
         return Stack(
           children: [
-            // Carousel Slider for Popular Movies with titles and subtitles
-            // SliderWidget(
-            //   movies: popularMovies,
-            //   imageUrlBuilder: (index) =>
-            //   "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
-            //   titleBuilder: (index) => popularMovies[index].title ?? 'No Title',
-            //   subtitleBuilder: (index) =>
-            //   popularMovies[index].releaseDate ?? 'No Release Date',
-            //   displayBookmark: true,
-            //   height: 300,  // Full-width slider height
-            //   top: 0,
-            //   left: 0,
-            //   right: 0,
-            // ),
 
-            // Second Slider with only images
-            // SliderWidget(
-            //   movies: popularMovies,
-            //   imageUrlBuilder: (index) =>
-            //   "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
-            //   displayBookmark: false,
-            //   //height: ,  // Different height
-            //   //width: 50,   // Smaller width
-            //   top: 100,     // Positioned below the first slider
-            //   left: 30,
-            //   right: 150,   // Positioned to the right
-            // ),
+            SliderWidget(
+              movies: popularMovies,
+              imageUrlBuilder: (index) =>
+              "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
+              titleBuilder: (index) => popularMovies[index].title ?? 'No Title',
+              subtitleBuilder: (index) =>
+              popularMovies[index].releaseDate ?? 'No Release Date',
+              displayBookmark: false,
+              height: 300,
+              top: 0,
+              left: 0,
+              right: 0,
+              showPlayIcon: true,
+            ),
+
+
+            SliderWidget(
+              movies: popularMovies,
+              imageUrlBuilder: (index) =>
+              "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
+              displayBookmark: true,
+              height: 199,
+              top: 130,
+              left: 30,
+              right: 200,
+              showPlayIcon: false,
+              borderRadius: 10,
+            ),
           ],
         );
       },

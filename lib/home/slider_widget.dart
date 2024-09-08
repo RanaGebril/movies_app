@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class SliderWidget extends StatelessWidget {
-  List movies;
-  String Function(int index)? imageUrlBuilder;
-  String Function(int index)? titleBuilder;
-  String Function(int index)? subtitleBuilder;
-  bool displayBookmark;
-  double width;
-  double height;
-  double top;
-  double left;
-  double right;
+   List movies;
+   String Function(int index)? imageUrlBuilder;
+   String Function(int index)? titleBuilder;
+   String Function(int index)? subtitleBuilder;
+   bool displayBookmark;
+   double width;
+   double height;
+   double top;
+   double left;
+   double right;
+   double borderRadius;
+   bool showPlayIcon;
 
   SliderWidget({
     required this.movies,
@@ -24,6 +26,8 @@ class SliderWidget extends StatelessWidget {
     this.top = 0,
     this.left = 0,
     this.right = 0,
+    this.borderRadius = 10.0,
+    this.showPlayIcon = true,
     Key? key,
   }) : super(key: key);
 
@@ -51,30 +55,37 @@ class SliderWidget extends StatelessWidget {
 
             return imageUrl.isNotEmpty
                 ? Container(
-              height: height,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Expanded(
                     child: Stack(
                       children: [
-                        Image.network(
-                          imageUrl,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          errorBuilder: (context, error, stackTrace) {
-                            return Center(
-                              child: Icon(
-                                Icons.broken_image,
-                                color: Colors.white,
-                              ),
-                            );
-                          },
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(borderRadius),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: height,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Center(
+                                child: Icon(
+                                  Icons.broken_image,
+                                  color: Colors.white,
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                        Center(
-                          child: Icon(Icons.play_circle_sharp,
-                              color: Colors.white, size: 40),
-                        ),
+                        if (showPlayIcon)
+                          Center(
+                            child: Icon(
+                              Icons.play_circle_sharp,
+                              color: Colors.white,
+                              size: 40,
+                            ),
+                          ),
                         if (displayBookmark && index == 1)
                           Positioned(
                             top: 8,
