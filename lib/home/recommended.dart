@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/api_manager.dart';
 import 'package:movies_app/firebase_functions.dart';
 import 'package:movies_app/watch_list/whatch_list_model.dart';
@@ -19,7 +20,7 @@ class Recommended extends StatelessWidget {
           Text(
             'Recommended',
             style: TextStyle(
-              color: Colors.white,
+              color: Appcolors.whiteColor,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -36,7 +37,7 @@ class Recommended extends StatelessWidget {
                 return Center(
                   child: Text(
                     'Something went wrong!',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Appcolors.whiteColor),
                   ),
                 );
               }
@@ -61,7 +62,7 @@ class Recommended extends StatelessWidget {
                         color: Colors.grey[830],
                         borderRadius: BorderRadius.circular(8.0),
                         border: Border.all(
-                          color: Colors.grey[700]!,
+                          color: Appcolors.secondary,
                           width: 2.0,
                         ),
                       ),
@@ -91,7 +92,7 @@ class Recommended extends StatelessWidget {
                                         return Center(
                                           child: Icon(
                                             Icons.broken_image,
-                                            color: Colors.white,
+                                            color: Appcolors.whiteColor,
                                           ),
                                         );
                                       },
@@ -118,11 +119,11 @@ class Recommended extends StatelessWidget {
                                           children: [
                                             Icon(
                                               Icons.bookmark,
-                                              color: Colors.white10,
+                                              color: Appcolors.secondary,
                                             ),
                                             Icon(
                                               Icons.add,
-                                              color: Colors.white,
+                                              color: Appcolors.whiteColor,
                                             ),
                                           ],
                                         ),
@@ -141,14 +142,14 @@ class Recommended extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.star,
-                                        color: Colors.yellow,
+                                        color: Appcolors.yellowColor,
                                         size: 16.0,
                                       ),
                                       SizedBox(width: 4.0),
                                       Text(
                                         voteAverage.toStringAsFixed(1),
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Appcolors.whiteColor,
                                           fontSize: 14.0,
                                         ),
                                       ),
@@ -157,7 +158,7 @@ class Recommended extends StatelessWidget {
                                   Text(
                                     title,
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Appcolors.whiteColor,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14.0,
                                     ),
@@ -168,7 +169,7 @@ class Recommended extends StatelessWidget {
                                   Text(
                                     releaseDate,
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Appcolors.whiteColor,
                                       fontSize: 13.0,
                                     ),
                                     overflow: TextOverflow.ellipsis,

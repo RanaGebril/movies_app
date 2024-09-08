@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 
 class Categories extends StatelessWidget {
   String imageUrl;
@@ -29,7 +30,7 @@ class Categories extends StatelessWidget {
             child: Text(
               genreName,
               style: TextStyle(
-                color: Colors.white,
+                color: Appcolors.whiteColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/api_manager.dart';
 import 'package:movies_app/firebase_functions.dart';
 import 'package:movies_app/movie%20_details/movie_details_screen.dart';
@@ -15,7 +16,7 @@ class NewReals extends StatelessWidget {
         Text(
           'New Release',
           style: TextStyle(
-            color: Colors.white,
+            color: Appcolors.whiteColor,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -34,7 +35,7 @@ class NewReals extends StatelessWidget {
               return Center(
                 child: Text(
                   'Something went wrong!',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Appcolors.whiteColor),
                 ),
               );
             }
@@ -81,7 +82,7 @@ class NewReals extends StatelessWidget {
                                 return Center(
                                   child: Icon(
                                     Icons.broken_image,
-                                    color: Colors.white,
+                                    color: Appcolors.whiteColor,
                                   ),
                                 );
                               },
@@ -121,7 +122,7 @@ class NewReals extends StatelessWidget {
                                       index == 1 ? Icons
                                           .check : Icons
                                           .add,
-                                      color: Colors.white,
+                                      color: Appcolors.whiteColor,
                                     ),
                                   ],
                                 ),

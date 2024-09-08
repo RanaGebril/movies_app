@@ -14,8 +14,8 @@ class SearchTab extends SearchDelegate<String> {
 
   @override
   TextStyle? get searchFieldStyle => TextStyle(
-    color: Colors.black, // Change text color
-    fontSize: 16.0, // Change font size
+    color: Appcolors.primary,
+    fontSize: 16.0,
   );
 
   @override
@@ -29,10 +29,10 @@ class SearchTab extends SearchDelegate<String> {
 
       ),
     ),
-    fillColor: Colors.grey[200],
+    fillColor: Appcolors.whiteColor,
     filled: true,
     hintStyle: TextStyle(
-      color: Colors.grey[600],
+      color: Appcolors.secondary
     ),
   );
 
@@ -40,7 +40,7 @@ class SearchTab extends SearchDelegate<String> {
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear, color: Colors.blueGrey),
+        icon: Icon(Icons.clear, color: Appcolors.secondary),
         onPressed: () {
           query = '';
         },
@@ -51,7 +51,7 @@ class SearchTab extends SearchDelegate<String> {
   @override
   Widget? buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back, color: Colors.blueGrey),
+      icon: Icon(Icons.arrow_back, color: Appcolors.secondary),
       onPressed: () {
         close(context, '');
       },
@@ -147,7 +147,7 @@ class SearchTab extends SearchDelegate<String> {
                           Text(
                             movie.getYear(),
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Colors.grey[600]
+                                color: Appcolors.secondary
                             ),
                           ),
                           SizedBox(height: 4),
@@ -156,7 +156,7 @@ class SearchTab extends SearchDelegate<String> {
                                 ? 'Heroes: ${movie.actors!.take(3).join(', ')}' // Showing top 3 heroes
                                 : 'No Heroes Found',
                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Colors.grey[600]
+                                color: Appcolors.secondary
                             ),
                           ),
                         ],
@@ -180,7 +180,7 @@ class SearchTab extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     return Center(
       child: Container(
-        color: Colors.black,
+        color: Appcolors.primary,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -188,14 +188,14 @@ class SearchTab extends SearchDelegate<String> {
             Icon(
               Icons.local_movies,
               size: 100,
-              color: Colors.blueGrey,
+              color: Appcolors.secondary
             ),
             SizedBox(height: 5),
             Text(
               'Search for your favorite movies',
               style: TextStyle(
                 fontSize: 13,
-                color: Colors.blueGrey,
+                color: Appcolors.secondary
               ),
               textAlign: TextAlign.center,
             ),

@@ -4,6 +4,7 @@ import 'package:movies_app/browes_screen/Browse.dart';
 import 'package:movies_app/home/new_reals.dart';
 import 'package:movies_app/home/popular-UI.dart';
 import 'package:movies_app/home/recommended.dart';
+import 'package:movies_app/nav_bar.dart';
 import 'package:movies_app/watch_list/WatchList.dart';
 import 'package:movies_app/api_manager.dart';
 import 'package:movies_app/search_screen/search_provider.dart';
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
             return Center(
               child: Text(
                 'Something went wrong!',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Appcolors.whiteColor),
               ),
             );
           }
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     Container(
                       width: double.infinity,
-                      color: Colors.grey[850],
+                      color: Appcolors.secondary,
                       padding: EdgeInsets.symmetric(
                           vertical: 10, horizontal: 16),
                       child: NewReals(),
@@ -71,52 +72,10 @@ class HomePage extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: NavBar(),
     );
   }
 }
 
-class BottomNavBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Color(0xff1a1a1a),
-      child: Row(
-        children: [
-          Spacer(),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, HomePage.routeName);
-            },
-            icon: Icon(Icons.home_sharp, color: Colors.white),
-          ),
-          Spacer(),
-          IconButton(onPressed:() {
-            showSearch(context: context, delegate: SearchTab(
-              searchProvider: Provider.of<SearchProvider>(context, listen: false),
-            ),
-            );
-            },
-            icon: Icon(Icons.search, color: Colors.white),
-          ),
-          Spacer(),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, Browse.routeName);
-            },
-            icon: Icon(Icons.movie_creation, color: Colors.white),
-          ),
-          Spacer(),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, WatchListScreen.routeName);
-            },
-            icon: Icon(Icons.collections_bookmark, color: Colors.white),
-          ),
-          Spacer(),
-        ],
-      ),
-    );
-  }
-}
+
 

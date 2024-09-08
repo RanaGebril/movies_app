@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/api_manager.dart';
 import 'package:movies_app/browes_screen/Browse.dart';
 import 'package:movies_app/firebase_functions.dart';
 import 'package:movies_app/home/HomePage.dart';
 import 'package:movies_app/movie%20_details/movie_details_model.dart';
+import 'package:movies_app/nav_bar.dart';
 import 'package:movies_app/search_screen/search_provider.dart';
 import 'package:movies_app/search_screen/search_tab.dart';
 import 'package:movies_app/similar_movies.dart';
@@ -26,7 +28,7 @@ class MovieDetailsScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.grey[800],
+        color: Appcolors.secondary,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -34,18 +36,18 @@ class MovieDetailsScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Icons.star, color: Colors.yellow[700]),
+              Icon(Icons.star, color: Appcolors.yellowColor),
               const SizedBox(width: 4),
               Text(
                 '${movie.voteAverage ?? 0}',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Appcolors.whiteColor),
               ),
             ],
           ),
           Text(
             movie.title ?? "No Title",
             style: TextStyle(
-              color: Colors.white,
+              color: Appcolors.whiteColor,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -53,7 +55,7 @@ class MovieDetailsScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             '${movie.releaseDate?.split('-')[0] ?? "N/A"}',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Appcolors.whiteColor),
           ),
         ],
       ),
@@ -65,7 +67,7 @@ class MovieDetailsScreen extends StatelessWidget {
     final int id = ModalRoute.of(context)?.settings.arguments as int;
 
     return Scaffold(
-      backgroundColor: Color(0xff131313),
+      backgroundColor: Appcolors.primary,
       appBar: AppBar(
         title: FutureBuilder<MovieDetailsModel>(
           future: ApiManager.getMovieDetails(id),
@@ -74,13 +76,13 @@ class MovieDetailsScreen extends StatelessWidget {
                 snapshot.hasData) {
               return Text(
                 snapshot.data?.title ?? "Movie Details",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color:Appcolors.whiteColor),
               );
             }
             return Text('Movie Details');
           },
         ),
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Appcolors.secondary,
       ),
       body: FutureBuilder<MovieDetailsModel>(
         future: ApiManager.getMovieDetails(id),
@@ -91,12 +93,12 @@ class MovieDetailsScreen extends StatelessWidget {
           if (snapshot.hasError) {
             return Center(
                 child: Text("Something went wrong",
-                    style: TextStyle(color: Colors.white)));
+                    style: TextStyle(color: Appcolors.whiteColor)));
           }
           if (!snapshot.hasData) {
             return Center(
                 child: Text("No details available",
-                    style: TextStyle(color: Colors.white)));
+                    style: TextStyle(color: Appcolors.whiteColor)));
           }
 
           var movieDetails = snapshot.data!;
@@ -118,7 +120,7 @@ class MovieDetailsScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Appcolors.whiteColor,
                     ),
                   ),
                 ),
@@ -129,12 +131,12 @@ class MovieDetailsScreen extends StatelessWidget {
                     children: [
                       Text(
                         '${movieDetails.releaseDate?.split('-')[0] ?? "N/A"}',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: TextStyle(fontSize: 16, color: Appcolors.whiteColor),
                       ),
                       const SizedBox(width: 10),
                       Text(
                         '${movieDetails.runtime} min',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
+                        style: TextStyle(fontSize: 16, color: Appcolors.whiteColor),
                       ),
                     ],
                   ),
@@ -184,9 +186,9 @@ class MovieDetailsScreen extends StatelessWidget {
                                 children: [
                                   Align(
                                     alignment: Alignment.topLeft,
-                                    child: Icon(Icons.bookmark, color: Colors.grey[800]),
+                                    child: Icon(Icons.bookmark, color: Appcolors.secondary),
                                   ),
-                                  Icon(Icons.add, color: Colors.white, size: 24),
+                                  Icon(Icons.add, color: Appcolors.whiteColor, size: 24),
                                 ],
                               ),
                             ),
@@ -205,12 +207,12 @@ class MovieDetailsScreen extends StatelessWidget {
                                   .map((genre) => Container(
                                 padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                                 decoration: BoxDecoration(
-                                  color: Colors.grey[800],
+                                  color: Appcolors.secondary,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Text(
                                   genre.name ?? "",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Appcolors.whiteColor),
                                 ),
                               ))
                                   .toList(),
@@ -218,16 +220,16 @@ class MovieDetailsScreen extends StatelessWidget {
                             const SizedBox(height: 16),
                             Text(
                               movieDetails.overview ?? "No overview available",
-                              style: TextStyle(fontSize: 16, color: Colors.white),
+                              style: TextStyle(fontSize: 16, color: Appcolors.whiteColor),
                             ),
                             const SizedBox(height: 16),
                             Row(
                               children: [
-                                Icon(Icons.star, color: Colors.yellow[700]),
+                                Icon(Icons.star, color: Appcolors.yellowColor),
                                 const SizedBox(width: 4),
                                 Text(
                                   '${movieDetails.voteAverage ?? 0}',
-                                  style: TextStyle(fontSize: 16, color: Colors.white),
+                                  style: TextStyle(fontSize: 16, color: Appcolors.whiteColor),
                                 ),
                               ],
                             ),
@@ -250,7 +252,7 @@ class MovieDetailsScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Appcolors.whiteColor,
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -263,12 +265,12 @@ class MovieDetailsScreen extends StatelessWidget {
                           if (snapshot.hasError) {
                             return Center(
                                 child: Text("Failed to load similar movies",
-                                    style: TextStyle(color: Colors.white)));
+                                    style: TextStyle(color: Appcolors.whiteColor)));
                           }
                           if (!snapshot.hasData || snapshot.data!.isEmpty) {
                             return Center(
                                 child: Text("No similar movies available",
-                                    style: TextStyle(color: Colors.white)));
+                                    style: TextStyle(color: Appcolors.whiteColor)));
                           }
 
                           return SizedBox(
@@ -282,7 +284,7 @@ class MovieDetailsScreen extends StatelessWidget {
                                   width: 150,
                                   margin: const EdgeInsets.only(right: 8),
                                   decoration: BoxDecoration(
-                                    color: Colors.grey[800],
+                                    color: Appcolors.secondary,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Stack(
@@ -322,8 +324,8 @@ class MovieDetailsScreen extends StatelessWidget {
                                           },
                                           child: Stack(
                                             children: [
-                                              Icon(Icons.bookmark, color: Colors.grey[800], size: 30),
-                                              Icon(Icons.add, color: Colors.white, size: 24),
+                                              Icon(Icons.bookmark, color: Appcolors.secondary, size: 30),
+                                              Icon(Icons.add, color: Appcolors.whiteColor, size: 24),
                                             ],
                                           ),
                                         ),
@@ -354,38 +356,7 @@ class MovieDetailsScreen extends StatelessWidget {
         },
 
       ),
-      bottomNavigationBar:Container(
-        color:Color(0xff1a1a1a) ,
-        child: Row(
-          children: [
-            Spacer(),
-            IconButton(
-                onPressed:() {
-                  Navigator.pushNamed(context,HomePage.routeName);
-                }, icon:Icon(Icons.home_sharp,
-              color: Colors.white,
-            )),
-            Spacer(),
-            IconButton(onPressed:() {
-              showSearch(context: context, delegate: SearchTab(
-                searchProvider: Provider.of<SearchProvider>(context, listen: false),
-              ),
-              );
-            }, icon:Icon(Icons.search,color:Colors.white)),
-            Spacer(),
-            IconButton(onPressed:() {
-              Navigator.pushNamed(context,Browse.routeName);
-            }, icon:Icon(Icons.movie_creation,color:Colors.white)),
-            Spacer(),
-            IconButton(onPressed:() {
-              Navigator.pushNamed(context,WatchListScreen.routeName);
-            }, icon:Icon(Icons.collections_bookmark,color:Colors.white)),
-            Spacer(),
-
-          ],
-
-        ),
-      ),
+      bottomNavigationBar:NavBar()
     );
   }
 }

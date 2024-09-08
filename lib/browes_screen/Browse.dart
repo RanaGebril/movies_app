@@ -4,6 +4,7 @@ import 'package:movies_app/browes_screen/BrowseCategory.dart';
 import 'package:movies_app/browes_screen/DisplayingMoviesByCategory.dart';
 import 'package:movies_app/browes_screen/categories.dart';
 import 'package:movies_app/home/HomePage.dart';
+import 'package:movies_app/nav_bar.dart';
 import 'package:movies_app/search_screen/search_provider.dart';
 import 'package:movies_app/search_screen/search_tab.dart';
 import 'package:movies_app/watch_list/WatchList.dart';
@@ -36,7 +37,7 @@ class _BrowseState extends State<Browse> {
         backgroundColor: Colors.transparent,
         title: Text('Browse Category'),
       ),
-      backgroundColor: Color(0xff131313),
+      backgroundColor: Appcolors.primary,
       body: FutureBuilder<BrowseCategory>(
         future: _browseCategoryFuture,
         builder: (context, snapshot) {
@@ -78,42 +79,7 @@ class _BrowseState extends State<Browse> {
           }
         },
       ),
-      bottomNavigationBar: Container(
-        color: Color(0xff1a1a1a),
-        child: Row(
-          children: [
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, HomePage.routeName);
-              },
-              icon: Icon(Icons.home_sharp, color: Colors.white),
-            ),
-            Spacer(),
-            IconButton(onPressed:() {
-              showSearch(context: context, delegate: SearchTab(
-                searchProvider: Provider.of<SearchProvider>(context, listen: false),
-              ),
-              );
-            }, icon:Icon(Icons.search,color:Appcolors.whiteColor)),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Browse.routeName);
-              },
-              icon: Icon(Icons.movie_creation, color: Colors.white),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, WatchListScreen.routeName);
-              },
-              icon: Icon(Icons.collections_bookmark, color: Colors.white),
-            ),
-            Spacer(),
-          ],
-        ),
-      ),
+      bottomNavigationBar: NavBar(),
     );
   }
 }

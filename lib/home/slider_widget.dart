@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:movies_app/AppColors.dart';
 
 class SliderWidget extends StatelessWidget {
    List movies;
@@ -72,7 +73,7 @@ class SliderWidget extends StatelessWidget {
                               return Center(
                                 child: Icon(
                                   Icons.broken_image,
-                                  color: Colors.white,
+                                  color: Appcolors.whiteColor,
                                 ),
                               );
                             },
@@ -82,7 +83,7 @@ class SliderWidget extends StatelessWidget {
                           Center(
                             child: Icon(
                               Icons.play_circle_sharp,
-                              color: Colors.white,
+                              color: Appcolors.whiteColor,
                               size: 40,
                             ),
                           ),
@@ -101,7 +102,7 @@ class SliderWidget extends StatelessWidget {
                                   right: 0,
                                   child: Icon(
                                     Icons.add,
-                                    color: Colors.white,
+                                    color: Appcolors.whiteColor,
                                     size: 20,
                                   ),
                                 ),

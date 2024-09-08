@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/browes_screen/MoviesOfCategory.dart';
 import 'package:movies_app/api_manager.dart';
 
@@ -27,7 +28,7 @@ class _MoviesByCategoryScreenState extends State<MoviesByCategoryScreen> {
         title: Text('Movies'),
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: Color(0xff131313),
+      backgroundColor: Appcolors.primary,
       body: FutureBuilder<MoviesOfCategory>(
         future: _moviesOfCategoryFuture,
         builder: (context, snapshot) {
@@ -63,7 +64,7 @@ class _MoviesByCategoryScreenState extends State<MoviesByCategoryScreen> {
                       child: Text(
                         movie.title ?? '',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Appcolors.whiteColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 16.0,
                         ),
