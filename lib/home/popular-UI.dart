@@ -37,7 +37,7 @@ class PopularUi extends StatelessWidget {
               subtitleBuilder: (index) =>
               popularMovies[index].releaseDate ?? 'No Release Date',
               displayBookmark: false,
-              height: 300,
+              height: 270,
               top: 0,
               left: 0,
               right: 0,
@@ -50,10 +50,10 @@ class PopularUi extends StatelessWidget {
               imageUrlBuilder: (index) =>
               "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
               displayBookmark: true,
-              height: 199,
-              top: 130,
+              height: 165,
+              top: 95,
               left: 30,
-              right: 200,
+              right: 220,
               showPlayIcon: false,
               borderRadius: 10,
             ),

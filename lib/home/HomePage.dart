@@ -40,72 +40,80 @@ class HomePage extends StatelessWidget {
 
           return Stack(
             children: [
-           PopularUi(),
+              // Use Positioned to control the height of PopularUi
+              PopularUi(),
               Positioned(
-                top: 350,
+                top: MediaQuery.of(context).size.height * 0.3558,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        color: Colors.grey[850],
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 16),
-                        child: NewReals(),
-                      ),
-                      SizedBox(height: 15),
-                      Recommended()
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      color: Colors.grey[850],
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 16),
+                      child: NewReals(),
+                    ),
+                    SizedBox(height: 15),
+                    Recommended(),
+                  ],
                 ),
               ),
             ],
           );
         },
       ),
+      bottomNavigationBar: BottomNavBar(),
+    );
+  }
+}
 
-      bottomNavigationBar: Container(
-        color: Color(0xff1a1a1a),
-        child: Row(
-          children: [
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, HomePage.routeName);
-              },
-              icon: Icon(Icons.home_sharp, color: Colors.white),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                showSearch(context: context, delegate: SearchTab(
+class BottomNavBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Color(0xff1a1a1a),
+      child: Row(
+        children: [
+          Spacer(),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, HomePage.routeName);
+            },
+            icon: Icon(Icons.home_sharp, color: Colors.white),
+          ),
+          Spacer(),
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchTab(
                   searchProvider: Provider.of<SearchProvider>(context, listen: false),
                 ),
-                );//
-              },
-              icon: Icon(Icons.search, color: Colors.white),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Browse.routeName);
-              },
-              icon: Icon(Icons.movie_creation, color: Colors.white),
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, WatchListScreen.routeName);
-              },
-              icon: Icon(Icons.collections_bookmark, color: Colors.white),
-            ),
-            Spacer(),
-          ],
-        ),
+              );
+            },
+            icon: Icon(Icons.search, color: Colors.white),
+          ),
+          Spacer(),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, Browse.routeName);
+            },
+            icon: Icon(Icons.movie_creation, color: Colors.white),
+          ),
+          Spacer(),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, WatchListScreen.routeName);
+            },
+            icon: Icon(Icons.collections_bookmark, color: Colors.white),
+          ),
+          Spacer(),
+        ],
       ),
     );
   }
 }
+
