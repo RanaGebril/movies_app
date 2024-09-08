@@ -24,12 +24,16 @@ class NavBar extends StatelessWidget {
             icon: Icon(Icons.home_sharp, color: Appcolors.whiteColor),
           ),
           Spacer(),
-          IconButton(onPressed:() {
-            showSearch(context: context, delegate: SearchTab(
-              searchProvider: Provider.of<SearchProvider>(context, listen: false),
-            ),
-            );
-          },
+          IconButton(
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchTab(
+                  searchProvider:
+                      Provider.of<SearchProvider>(context, listen: false),
+                ),
+              );
+            },
             icon: Icon(Icons.search, color: Appcolors.whiteColor),
           ),
           Spacer(),

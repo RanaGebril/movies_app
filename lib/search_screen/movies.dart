@@ -6,7 +6,13 @@ class Movie {
   String? releaseDate;
   List<String>? actors;
 
-  Movie({this.id, this.title, this.overview, this.posterPath, this.releaseDate, this.actors});
+  Movie(
+      {this.id,
+      this.title,
+      this.overview,
+      this.posterPath,
+      this.releaseDate,
+      this.actors});
 
   Movie.fromJson(Map<String, dynamic> json) {
     id = json['id']; // Add movie ID

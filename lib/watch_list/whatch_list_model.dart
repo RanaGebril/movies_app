@@ -13,11 +13,11 @@ class MovieModelWatchList {
 
   MovieModelWatchList.fromJson(Map<String, dynamic> json)
       : this(
-    title: json['title'],
-    imageUrl: json['imageUrl'],
-    releaseDate: json['releaseDate'],
-    id: json['id'] ?? '', // Default to empty string if id is not present
-  );
+          title: json['title'],
+          imageUrl: json['imageUrl'],
+          releaseDate: json['releaseDate'],
+          id: json['id'] ?? '', // Default to empty string if id is not present
+        );
 
   Map<String, dynamic> toJson() {
     return {

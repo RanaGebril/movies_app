@@ -7,10 +7,10 @@ class UpComing_Movies {
 
   UpComing_Movies(
       {this.dates,
-        this.page,
-        this.results,
-        this.totalPages,
-        this.totalResults});
+      this.page,
+      this.results,
+      this.totalPages,
+      this.totalResults});
 
   UpComing_Movies.fromJson(Map<String, dynamic> json) {
     dates = json['dates'] != null ? new Dates.fromJson(json['dates']) : null;
@@ -24,7 +24,6 @@ class UpComing_Movies {
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
-
 }
 
 class Dates {
@@ -37,8 +36,6 @@ class Dates {
     maximum = json['maximum'];
     minimum = json['minimum'];
   }
-
-
 }
 
 class Results {
@@ -59,19 +56,19 @@ class Results {
 
   Results(
       {this.adult,
-        this.backdropPath,
-        this.genreIds,
-        this.id,
-        this.originalLanguage,
-        this.originalTitle,
-        this.overview,
-        this.popularity,
-        this.posterPath,
-        this.releaseDate,
-        this.title,
-        this.video,
-        this.voteAverage,
-        this.voteCount});
+      this.backdropPath,
+      this.genreIds,
+      this.id,
+      this.originalLanguage,
+      this.originalTitle,
+      this.overview,
+      this.popularity,
+      this.posterPath,
+      this.releaseDate,
+      this.title,
+      this.video,
+      this.voteAverage,
+      this.voteCount});
 
   Results.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];

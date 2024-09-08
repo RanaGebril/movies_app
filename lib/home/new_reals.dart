@@ -10,38 +10,26 @@ class NewReals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'New Release',
-          style: TextStyle(
-            color: Appcolors.whiteColor,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Text('New Release', style: Theme.of(context).textTheme.bodyLarge),
         SizedBox(height: 5),
         FutureBuilder(
           future: ApiManager.getUpComingMovies(),
           builder: (context, snapshot) {
-            if (snapshot.connectionState ==
-                ConnectionState.waiting) {
-              return Center(
-                  child: CircularProgressIndicator());
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
             }
 
             if (snapshot.hasError) {
               return Center(
-                child: Text(
-                  'Something went wrong!',
-                  style: TextStyle(color: Appcolors.whiteColor),
-                ),
+                child: Text('Something went wrong!',
+                    style: Theme.of(context).textTheme.bodyMedium),
               );
             }
 
-            var upcomingMovies = snapshot.data?.results ??
-                [];
+            var upcomingMovies = snapshot.data?.results ?? [];
 
             return Container(
               height: 130,
@@ -51,34 +39,28 @@ class NewReals extends StatelessWidget {
                 itemCount: upcomingMovies.length,
                 itemBuilder: (context, index) {
                   String imageUrl =
-                      "https://image.tmdb.org/t/p/w500${upcomingMovies[index]
-                      .posterPath ?? ''}";
-                  int movieId = upcomingMovies[index].id ??
-                      0;
+                      "https://image.tmdb.org/t/p/w500${upcomingMovies[index].posterPath ?? ''}";
+                  int movieId = upcomingMovies[index].id ?? 0;
 
                   return Container(
                     width: 90,
-                    margin: EdgeInsets.symmetric(
-                        horizontal: 8.0),
+                    margin: EdgeInsets.symmetric(horizontal: 8.0),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(
                           context,
                           MovieDetailsScreen.routeName,
-                          arguments: upcomingMovies[index]
-                              .id,
+                          arguments: upcomingMovies[index].id,
                         );
                       },
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            8.0),
+                        borderRadius: BorderRadius.circular(8.0),
                         child: Stack(
                           children: [
                             Image.network(
                               imageUrl,
                               fit: BoxFit.fill,
-                              errorBuilder: (context, error,
-                                  stackTrace) {
+                              errorBuilder: (context, error, stackTrace) {
                                 return Center(
                                   child: Icon(
                                     Icons.broken_image,
@@ -93,23 +75,21 @@ class NewReals extends StatelessWidget {
                               child: GestureDetector(
                                 onTap: () async {
                                   var movie = upcomingMovies[index];
-                                  await FirebaseFunctions
-                                      .addMovie(
+                                  await FirebaseFunctions.addMovie(
                                       MovieModelWatchList(
-                                        title: movie
-                                            .title ?? '',
-                                        imageUrl: "https://image.tmdb.org/t/p/w500${movie
-                                            .posterPath ??
-                                            ''}",
-                                        releaseDate: movie
-                                            .releaseDate ??
-                                            '',
-                                        id: '', // ID will be set by Firestore
-                                      ));
-                                  ScaffoldMessenger.of(
-                                      context).showSnackBar(
-                                    SnackBar(content: Text(
-                                        'Movie added to watchlist')),
+                                    title: movie.title ?? '',
+                                    imageUrl:
+                                        "https://image.tmdb.org/t/p/w500${movie.posterPath ?? ''}",
+                                    releaseDate: movie.releaseDate ?? '',
+                                    id: '', // ID will be set by Firestore
+                                  ));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text(
+                                      'Movie added to watchlist',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    )),
                                   );
                                 },
                                 child: Stack(
@@ -119,9 +99,7 @@ class NewReals extends StatelessWidget {
                                       color: Colors.white10,
                                     ),
                                     Icon(
-                                      index == 1 ? Icons
-                                          .check : Icons
-                                          .add,
+                                      index == 1 ? Icons.check : Icons.add,
                                       color: Appcolors.whiteColor,
                                     ),
                                   ],

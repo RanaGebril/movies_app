@@ -5,7 +5,9 @@ import 'package:movies_app/watch_list/whatch_list_model.dart';
 class FirebaseFunctions {
   // Get a reference to the movies collection
   static CollectionReference<MovieModelWatchList> getMoviesCollection() {
-    return FirebaseFirestore.instance.collection('Movies').withConverter<MovieModelWatchList>(
+    return FirebaseFirestore.instance
+        .collection('Movies')
+        .withConverter<MovieModelWatchList>(
       fromFirestore: (snapshot, _) {
         return MovieModelWatchList.fromJson(snapshot.data()!);
       },

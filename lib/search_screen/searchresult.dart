@@ -1,4 +1,5 @@
 import 'package:movies_app/search_screen/movies.dart';
+
 class SearchResult {
   SearchResult({
     this.page,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/api_manager.dart';
 import 'package:movies_app/home/slider_widget.dart';
 
@@ -17,10 +16,8 @@ class PopularUi extends StatelessWidget {
 
         if (snapshot.hasError) {
           return Center(
-            child: Text(
-              'Something went wrong!',
-              style: TextStyle(color: Appcolors.whiteColor),
-            ),
+            child: Text('Something went wrong!',
+                style: Theme.of(context).textTheme.bodyMedium),
           );
         }
 
@@ -28,14 +25,13 @@ class PopularUi extends StatelessWidget {
 
         return Stack(
           children: [
-
             SliderWidget(
               movies: popularMovies,
               imageUrlBuilder: (index) =>
-              "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
+                  "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
               titleBuilder: (index) => popularMovies[index].title ?? 'No Title',
               subtitleBuilder: (index) =>
-              popularMovies[index].releaseDate ?? 'No Release Date',
+                  popularMovies[index].releaseDate ?? 'No Release Date',
               displayBookmark: false,
               height: 270,
               top: 0,
@@ -43,12 +39,10 @@ class PopularUi extends StatelessWidget {
               right: 0,
               showPlayIcon: true,
             ),
-
-
             SliderWidget(
               movies: popularMovies,
               imageUrlBuilder: (index) =>
-              "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
+                  "https://image.tmdb.org/t/p/w500${popularMovies[index].backdropPath ?? ''}",
               displayBookmark: true,
               height: 165,
               top: 95,

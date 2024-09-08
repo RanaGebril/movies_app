@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/search_screen/search_provider.dart';
-import 'package:provider/provider.dart'; // Update with your actual path
 
 class SearchTab extends SearchDelegate<String> {
   final SearchProvider searchProvider;
@@ -14,27 +12,21 @@ class SearchTab extends SearchDelegate<String> {
 
   @override
   TextStyle? get searchFieldStyle => TextStyle(
-    color: Appcolors.primary,
-    fontSize: 16.0,
-  );
+        color: Appcolors.primary,
+        fontSize: 16.0,
+      );
 
   @override
   InputDecorationTheme get searchFieldDecorationTheme => InputDecorationTheme(
-    contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30.0),
-      borderSide: BorderSide(
-          color: Appcolors.primary,
-          width: 1
-
-      ),
-    ),
-    fillColor: Appcolors.whiteColor,
-    filled: true,
-    hintStyle: TextStyle(
-      color: Appcolors.secondary
-    ),
-  );
+        contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30.0),
+          borderSide: BorderSide(color: Appcolors.primary, width: 1),
+        ),
+        fillColor: Appcolors.whiteColor,
+        filled: true,
+        hintStyle: TextStyle(color: Appcolors.secondary),
+      );
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -60,7 +52,8 @@ class SearchTab extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    searchFuture = searchProvider.searchMovies(query); // Update future with the new query
+    searchFuture =
+        searchProvider.searchMovies(query); // Update future with the new query
 
     return FutureBuilder(
       future: searchFuture,
@@ -75,7 +68,9 @@ class SearchTab extends SearchDelegate<String> {
         }
 
         if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.red)));
+          return Center(
+              child: Text('Error: ${snapshot.error}',
+                  style: TextStyle(color: Colors.red)));
         }
 
         final movies = searchProvider.movies;
@@ -96,7 +91,7 @@ class SearchTab extends SearchDelegate<String> {
                   SizedBox(height: 5),
                   Text(
                     'No result found',
-                    style:Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.center,
                   ),
                 ],
@@ -118,7 +113,8 @@ class SearchTab extends SearchDelegate<String> {
                     Expanded(
                       flex: 2,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12), // Border radius of 12
+                        borderRadius:
+                            BorderRadius.circular(12), // Border radius of 12
                         child: Image.network(
                           'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                           width: 120,
@@ -126,9 +122,11 @@ class SearchTab extends SearchDelegate<String> {
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
                             // Fallback image if the network image fails to load
-                            return Icon(Icons.movie_creation_sharp,
+                            return Icon(
+                              Icons.movie_creation_sharp,
                               color: Appcolors.secondary,
-                              size: 100,);
+                              size: 100,
+                            );
                           },
                         ),
                       ),
@@ -139,25 +137,25 @@ class SearchTab extends SearchDelegate<String> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                              movie.title ?? 'No Title',
-                              style:Theme.of(context).textTheme.bodyLarge
-                          ),
+                          Text(movie.title ?? 'No Title',
+                              style: Theme.of(context).textTheme.bodyLarge),
                           SizedBox(height: 4),
                           Text(
                             movie.getYear(),
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Appcolors.secondary
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: Appcolors.secondary),
                           ),
                           SizedBox(height: 4),
                           Text(
                             movie.actors != null && movie.actors!.isNotEmpty
                                 ? 'Heroes: ${movie.actors!.take(3).join(', ')}' // Showing top 3 heroes
                                 : 'No Heroes Found',
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Appcolors.secondary
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(color: Appcolors.secondary),
                           ),
                         ],
                       ),
@@ -185,18 +183,11 @@ class SearchTab extends SearchDelegate<String> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Icon(
-              Icons.local_movies,
-              size: 100,
-              color: Appcolors.secondary
-            ),
+            Icon(Icons.local_movies, size: 100, color: Appcolors.secondary),
             SizedBox(height: 5),
             Text(
               'Search for your favorite movies',
-              style: TextStyle(
-                fontSize: 13,
-                color: Appcolors.secondary
-              ),
+              style: TextStyle(fontSize: 13, color: Appcolors.secondary),
               textAlign: TextAlign.center,
             ),
           ],

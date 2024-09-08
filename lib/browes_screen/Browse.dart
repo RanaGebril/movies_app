@@ -3,14 +3,8 @@ import 'package:movies_app/AppColors.dart';
 import 'package:movies_app/browes_screen/BrowseCategory.dart';
 import 'package:movies_app/browes_screen/DisplayingMoviesByCategory.dart';
 import 'package:movies_app/browes_screen/categories.dart';
-import 'package:movies_app/home/HomePage.dart';
 import 'package:movies_app/nav_bar.dart';
-import 'package:movies_app/search_screen/search_provider.dart';
-import 'package:movies_app/search_screen/search_tab.dart';
-import 'package:movies_app/watch_list/WatchList.dart';
 import 'package:movies_app/api_manager.dart';
-import 'package:provider/provider.dart';
-
 
 class Browse extends StatefulWidget {
   static const String routeName = 'browse';

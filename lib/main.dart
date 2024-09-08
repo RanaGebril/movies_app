@@ -10,35 +10,34 @@ import 'package:provider/provider.dart';
 import 'movie _details/movie_details_screen.dart';
 
 void main() async {
- WidgetsFlutterBinding.ensureInitialized();
- await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
- );
- runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
- @override
- Widget build(BuildContext context) {
-  return MultiProvider(
-  providers: [
-  ChangeNotifierProvider(
-  create: (context) => SearchProvider(),
-  )
-   ],
-    child: MaterialApp(
-     initialRoute: HomePage.routeName,
-     routes: {
-      HomePage.routeName: (context) => HomePage(),
-      WatchListScreen.routeName:(context) => WatchListScreen(),
-      Browse.routeName:(context) => Browse(),
-      MovieDetailsScreen.routeName:(context) => MovieDetailsScreen(),
-
-     },
-     debugShowCheckedModeBanner: false,
-     themeMode: ThemeMode.dark,
-     darkTheme: MyThemeData.appTheme,
-    ),
-  );
- }
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => SearchProvider(),
+        )
+      ],
+      child: MaterialApp(
+        initialRoute: HomePage.routeName,
+        routes: {
+          HomePage.routeName: (context) => HomePage(),
+          WatchListScreen.routeName: (context) => WatchListScreen(),
+          Browse.routeName: (context) => Browse(),
+          MovieDetailsScreen.routeName: (context) => MovieDetailsScreen(),
+        },
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
+        darkTheme: MyThemeData.appTheme,
+      ),
+    );
+  }
 }

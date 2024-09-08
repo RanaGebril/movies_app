@@ -3,7 +3,6 @@ import 'package:movies_app/api_manager.dart';
 import 'package:movies_app/search_screen/movies.dart';
 import 'package:movies_app/search_screen/searchresult.dart';
 
-
 class SearchProvider with ChangeNotifier {
   List<Movie> _movies = [];
   bool _isLoading = false;
@@ -17,7 +16,8 @@ class SearchProvider with ChangeNotifier {
     _isLoading = true;
     notifyListeners();
     try {
-      SearchResult searchResults = await ApiManager.searchMoviesByName(movieName);
+      SearchResult searchResults =
+          await ApiManager.searchMoviesByName(movieName);
       List<Movie> moviesList = searchResults.results ?? [];
 
       // Fetch actors for each movie
