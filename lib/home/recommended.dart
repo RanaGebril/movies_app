@@ -36,7 +36,7 @@ class Recommended extends StatelessWidget {
               var topRatedMovies = snapshot.data?.results ?? [];
 
               return SizedBox(
-                height: 186,
+                height: 184,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: topRatedMovies.length,
